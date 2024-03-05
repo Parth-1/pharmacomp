@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+
+<title>
+    Medicomp | RESULTS FOUND !
+</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/glide.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.css">
+
+<link rel="stylesheet"type="text/css" href="/path/to/jquery.easy-pie-chart.css">
+
+
+<head>
+    <style>
+        .link {
+            color: black;
+        }
+
+        .link:hover {
+            color: rgba(39, 39, 39, 0.719);
+        }
+
+        .offers {
+            color: gray;
+            font-size: 13px;
+        }
+
+        .pricesec {
+            color: black;
+            font-size: 15px;
+        }
+
+        .boxForFoodItem {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px;
+            position: relative;
+            height: auto;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 1px 1px 30px gray;
+        }
+
+        .priceOnSwiggy,
+        .priceOnZomato {
+            font-family: monospace;
+            color: rgb(0, 0, 0);
+            margin: 20px;
+            font-size: 19px;
+            margin-bottom: 0px;
+        }
+
+        .nameOfItem {
+            font-family: cursive;
+            font-size: 27px;
+            color: rgb(255, 255, 255);
+        }
+
+        .numberOfItem {
+            position: absolute;
+            top: 8px;
+        }
+
+        .numberOfItemBox {
+            background-color: #4d94ff;
+            color: rgb(0, 0, 0);
+            height: 104%;
+            border-radius: 0px;
+            width: 60px;
+            font-family: cursive;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            font-size: 28px;
+        }
+
+        .outOfTheBox {
+            background-color: transparent;
+            flex-basis: 51%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .priceBox,
+        .offers {
+            height: auto;
+            margin: 15px;
+            width: 95%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .nameOfFoodItem {
+            padding: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 0px;
+            padding-right: 20px;
+            background-color: rgba(222, 184, 135, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media screen and (max-width:500px) {
+            .boxForFoodItem {
+                width: 95%;
+                max-width: 800px;
+                margin: 10px;
+                position: relative;
+                height: auto;
+                overflow: hidden;
+                background-color: white;
+                margin-top: 35px;
+                margin-bottom: 35px;
+            }
+
+            .priceOnSwiggy,
+            .priceOnZomato {
+                font-size: 15px;
+                color: black;
+                margin: 10px;
+            }
+
+            .nameOfItem {
+                font-family: cursive;
+                font-size: 20px;
+                color: rgb(0, 0, 0);
+                margin-left: 50px;
+            }
+
+            .numberOfItem {
+                position: absolute;
+                top: 21px;
+                right: 7px;
+                font-size: 23px;
+                text-align: center;
+            }
+
+            .offers {
+                color: gray;
+                font-size: 10px;
+            }
+
+            .pricesec {
+                color: black;
+                font-size: 13px;
+            }
+
+            .numberOfItemBox {
+                background-color: #4d94ff;
+                color: rgb(255, 255, 255);
+                height: 70px;
+                border-radius: 200px;
+                width: 70px;
+                font-family: cursive;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: -9px;
+                left: -9px;
+                font-size: 28px;
+            }
+
+            .outOfTheBox {
+                width: 100%;
+                background-color: transparent;
+                flex-basis: 100%;
+                height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .priceOnSwiggy {
+                margin-right: 15px;
+            }
+
+            .priceBox,
+            .offers {
+                text-align: right;
+            }
+
+            #swiggyOffersBox,
+            .offers {
+                width: 200px;
+                height: auto;
+            }
+        }
+
+        @media screen and (min-width:500px)and (max-width:1000px) {
+            .nameOfFoodItem {
+                padding: 40px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 0px;
+                padding-right: 20px;
+                background-color: rgba(222, 184, 135, 0);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 35px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .boxForFoodItem {
+                width: 95%;
+                max-width: 800px;
+                margin: 10px;
+                position: relative;
+                height: auto;
+                overflow: hidden;
+                background-color: white;
+                margin-top: 35px;
+                margin-bottom: 35px;
+            }
+
+            .priceOnSwiggy,
+            .priceOnZomato {
+                font-size: 18px;
+                color: black;
+                margin: 10px;
+            }
+
+            .nameOfItem {
+                font-family: cursive;
+                font-size: 40px;
+                color: rgb(0, 0, 0);
+                margin-left: 50px;
+            }
+
+            .numberOfItem {
+                position: absolute;
+                top: 14px;
+                right: 4px;
+                font-size: 40px;
+                text-align: center;
+            }
+
+            .numberOfItemBox {
+                background-color: #4d94ff;
+                color: rgb(255, 255, 255);
+                height: 100px;
+                border-radius: 200px;
+                width: 100px;
+                font-family: cursive;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: -16px;
+                left: -16px;
+                font-size: 32px;
+            }
+
+            .outOfTheBox {
+                width: 100%;
+                background-color: transparent;
+                flex-basis: 95%;
+                height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .priceOnSwiggy {
+                margin-right: 15px;
+            }
+
+            .priceBox,
+            .offers {
+                text-align: right;
+                font-size: 27px;
+            }
+
+            .pricesec {
+                color: black;
+                font-size: 30px;
+            }
+
+            #swiggyOffersBox,
+            .offers {
+                width: 300px;
+                height: auto;
+                font-size: 22px;
+            }
+            .pricesec{
+                font-size: 24px;
+            }
+            .priceBox img{
+                width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
+            }
+        
+        }
+
+        @media screen and (min-width:1000px) {
+            .nameOfFoodItem {
+                padding: 40px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 0px;
+                padding-right: 20px;
+                background-color: rgba(222, 184, 135, 0);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+
+            .priceOnSwiggy,
+            .priceOnZomato {
+                font-size: 22px;
+                color: black;
+            }
+
+            .nameOfItem {
+                font-family: cursive;
+                font-size: 24px;
+                color: rgb(0, 0, 0);
+                margin-left: 50px;
+            }
+
+            .numberOfItem {
+                position: absolute;
+                top: 45%;
+                font-size: 35px;
+                text-align: center;
+                transform: rotate(90deg);
+            }
+
+            .numberOfItemBox {
+                background-color: #4d94ff;
+                color: rgb(255, 255, 255);
+                height: 105%;
+                border-radius: 0px;
+                width: 80px;
+                font-family: cursive;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: -8px;
+                left: -8px;
+                font-size: 28px;
+            }
+
+            .outOfTheBox {
+                width: 520px;
+                background-color: transparent;
+                flex-basis: 50%;
+                height: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .priceBox,
+            .offers {
+                height: 150px;
+                margin: 15px;
+                width: 98%;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                flex-direction: column;
+                text-align: right;
+            }
+             
+            #swiggyOffersBox,
+            .offers {
+                width: 300px;
+                height: auto;
+                font-size: 23px;
+            }
+            .pricesec{
+                font-size: 23px;
+            }
+            .priceBox img{
+                width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+            }
+        }
+    </style>
+    <style>
+        #ImgOfShops {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 80px;
+            bottom: 5px;
+            margin: 30px;
+        }
+
+        .nameOfFoodItem {
+            margin-bottom: 100px;
+        }
+
+        @media screen and (min-width:10px)and (max-width:1000px) {
+            #ImgOfShops {
+                width: 200px;
+                height: 200px;
+                position: absolute;
+                left: 80px;
+                bottom: 5px;
+                margin: 30px;
+            }
+
+            .nameOfFoodItem {
+                margin-bottom: 200px;
+            }
+
+
+        }
+    </style>
+    <style>
+        #scrolling {
+            background-color: #3e3e3e;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #scrolling:before,
+        #scrolling:after {
+            content: '';
+            display: block;
+            background-color: #3e3e3e;
+            width: 100%;
+            height: 75px;
+            position: absolute;
+            z-index: 99;
+        }
+
+        #scrolling:before {
+            border-radius: 0% 0% 50% 50% / 0% 0% 100% 100%;
+            top: 15px;
+        }
+
+        #scrolling:after {
+            border-radius: 50% 50% 0% 0% / 100% 100% 0% 0%;
+            bottom: 15px;
+        }
+
+        .glide__slides {
+            display: flex;
+        }
+
+        .glide__slide {
+            width: initial;
+        }
+    </style>
+    <style>
+        .wrap {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .glide__slide {
+            line-height: 100px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .action-button:hover,
+        .action-button:focus {
+            box-shadow: 0 0 0 2px white, 0 0 0 3px #4d94ff;
+        }
+
+        .notvisible {
+            visibility: hidden;
+            width: 0px;
+            padding: 0px;
+            margin: -5px;
+        }
+    </style>
+</head>
+
+<body>
+    <%var itemCount=0%>
+        <!-- <h1 style="color: green"> GeeksForGeeks </h1> -->
+        <center>
+            <div style="font-family: monospace;text-transform:uppercase;font-size: 35px;margin: 40px;">
+                <%=final[final.length-1]%>
+            </div>
+
+        </center>
+        <%var count=0%>
+           
+
+            <% for(var i=0; i < final.length; i++) { %>
+                <%if(final[i].type) {%>
+                    <%count=i%>
+                        <%}%>
+                            <%}%>
+
+
+
+
+
+
+
+                                <section>
+
+                                    <div id='itemsDisplayBox'
+                                        style="height: auto;width: 100%;background-color: transparent;display: flex;align-items:center;justify-content: center;flex-wrap:wrap;">
+                                        <% for(var i=0; i < final.length; i++) { %>
+                                            <% if(final[i].item) {itemCount++;%>
+
+                                                <a href="<%=final[i].link%>" target='_blank'
+                                                    style="text-decoration: underline;color:gray;">
+                                                    <div class="outOfTheBox" value="final[i].price" id="price">
+                                                        <div class="boxForFoodItem">
+                                                            <div class="numberOfItemBox">
+                                                                <span class="numberOfItem">
+                                                                    <%=itemCount%>
+                                                                </span>
+                                                            </div>
+
+                                                            <span>
+                                                                <div class="nameOfFoodItem" style="margin-bottom: 0px">
+                                                                    <span class="nameOfItem"
+                                                                        style="color:black;font-family: 'Courier New', Courier, monospace;text-transform: uppercase;font-weight: bold;">
+                                                                        <%=final[i].name%>
+                                                                    </span>
+                                                                </div>
+
+                                                                <div class="priceBox"
+                                                                    style="color: gray;text-decoration: gray;">
+                                                                    <img src="<%=final[i].imgLink%>"
+                                                                        style="width:150px;height: 150px;position: absolute;left: 80px;bottom:5px">
+                                                                    <span class='offers'>
+                                                                        <%=final[i].item%>
+                                                                            <span class='pricesec'>
+                                                                               ₹ <%=final[i].price%>
+                                                                            </span>
+                                                                    </span>
+                                                                </div>
+                                                </a>
+
+
+                                    </div>
+                                    </div>
+                                    <%}%>
+                                        <%}%>
+
+                                </section>
+
+                                <div
+                                    style="font-family: monospace;text-transform:uppercase;font-size: 35px;margin: 40px;">
+                                    PRODUCT SUBSTITUTES
+                                </div>
+
+                                <section>
+                                    <div id='' class="glide multi">
+                                        <div class="glide__track" data-glide-el="track">
+                                            <ul class="glide__slides">
+                                                <% for(var k=0; k < final.length; k++) { %>
+                                                    <% if(final[k].subsname) {itemCount++;%>
+
+                                                        <li class="glide__slide">
+                                                            <div class="" value="<%=final[k].price%>" id="price">
+                                                                <div class="boxForFoodItem" style="width:auto">
+                                                                    <div class="numberOfItemBox">
+                                                                        <span class="numberOfItem"
+                                                                            style="font-size:35px">
+                                                                            Subs
+                                                                        </span>
+                                                                    </div>
+
+                                                                    <span>
+                                                                        <div class="nameOfFoodItem" style="margin-bottom: 0px;height: auto;line-height: 1;">
+                                                                            <span class="nameOfItem"
+                                                                                style="color:black;font-family: 'Courier New', Courier, monospace;text-transform: uppercase;font-weight: bold;">
+                                                                                <%=final[k].subsname%>
+                                                                            </span>
+                                                                        </div>
+
+                                                                        <div class="priceBox"
+                                                                            style="color: gray;text-decoration: gray;">
+                                                                            <img src="<%=final[k].subsImgLink%>"
+                                                                                >
+                                                                            <span class='offers'>
+                                                                                <span class='pricesec'
+                                                                                    style="font-size:25px">
+                                                                                    <%=final[k].subsprice%> <br>
+
+                                                                                
+                                                                                </span>
+                                                                                <span>
+                                                                                    <form id="ReSearchForm"
+                                                                                    action="/result" method="POST" style="display:flex"
+                                                                                   >
+                                                                                    <input type="text"
+                                                                                        name='dataOfMed'
+                                                                                        id='dataOfMed' class='pulse'
+                                                                                        value="<%=final[k].subsname%>"
+                                                                                        style="visibility:hidden;">
+
+                                                                                    <p style="font-family: inherit;font-size: 14px;"
+                                                                                        id='dataTitle'></p>
+                                                                         
+                                                                                        <div class="chart"
+                                                                                            id='design<%=final[k].subsname%>'
+                                                                                            data-percent="100"
+                                                                                            style="position: relative;width:50px;height:50px;font-size: 12px;display: none;">
+                                                                                            <span id='counter<%=final[k].subsname%>'
+                                                                                                style="color:#888787;font-size:bold;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);">
+                                                                                                0%
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                    <input type="submit"
+                                                                                        value="Medicomp" style="width: 100px; 
+                                                                                        background: #4d94ff;
+                                                                                        font-weight: bold;
+                                                                                        color: white;
+                                                                                        border: 0 none;
+                                                                                        border-radius: 1px;
+                                                                                        cursor: pointer;
+                                                                                        padding: 30px 10px;
+                                                                                        margin: 10px 5px;
+                                                                                        margin-bottom: 50px;"
+                                                                                        id="form-submit_<%=final[k].subsname%>"onclick='countdown(this.id)''>
+                                                                                </form>
+                                                                                </span>
+                                                                        </div>
+
+                                                        </li>
+
+                                                        <%}%>
+                                                            <%}%>
+                                                                </span>
+
+                                        </div>
+
+                                    </div>
+                                    </ul>
+                                    </div>
+                                </section>
+
+
+
+
+                                
+</body>
+
+
+</html>
